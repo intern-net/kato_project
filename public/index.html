@@ -19,7 +19,6 @@
   </head>
   <body>
     <div id="message">
-
       <div class="wrap">
         <div class="inner">
           <input type="text" id="search"><input type="button" value="検索" id="button">
@@ -57,23 +56,22 @@
 
           <!-- クリックで画像が変わるようにしよう -->
 
-          <img src="image/Start.jpg" alt="" id="play"/>
-          <img src="image/front.png" alt="" id="next"/>
+          <img src="image/back.jpg" alt="" id="back" onclick='onBackClick()' width="100" height="100">
+          <img src="image/Start.jpg" alt="" id="play" onclick='onPlayClick()' width="100" height="100">
+          <img src="image/front.png" alt="" id="next" onclick='onNextClick()' width="100" height="100">
           <audio id="articleSound"> <source src="notset.mp4" type="audio/wav"/> </audio>
-
-          </div>
 
         </div>
       </div>
     </div>
 
-    <!-- 音声ファイル群を取得します -->
+    <!-- firebaseから音声ファイル群を取得します -->
     <script src="https://www.gstatic.com/firebasejs/3.3.2/firebase.js"></script>
     <script src="./example.js"></script>
 
     <script>
 
-    <!-- 'Start.jpg'を'stop.jpg'に変える関数: imgchange -->
+/*    <!-- 'Start.jpg'を'stop.jpg'に変える関数: imgchange -->
 
     function imgchange(){
           $('#play').toggle(function(){
@@ -82,7 +80,8 @@
           $('#play').attr('src', 'image/Start.png');
         });
     }
-      $("#play").on("click", imgchange);
+  //    $("#play").on("click", imgchange);
+  */
 
 
     <!-- 音声ファイルのURLを、audioタグの中に入れよう -->
