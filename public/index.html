@@ -2,9 +2,20 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Welcome to Firebase Hosting</title>
+    <title>favclip station made by Hiroya Kato</title>
     <link rel="stylesheet" href="style.css" type="text/css"> 
-    <script type="text/javascript" src="test.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/3.3.2/firebase.js"></script>
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyBNoS7WQZpyc4Pko0xLYssHDuoTku86c_8",
+        authDomain: "kato-intern-project.firebaseapp.com",
+        databaseURL: "https://kato-intern-project.firebaseio.com",
+        storageBucket: "kato-intern-project.appspot.com",
+      };
+      firebase.initializeApp(config);
+    </script>
   </head>
   <body>
     <div id="message">
@@ -41,10 +52,56 @@
     <div id="message">
       <div class="wrap">
         <div class="inner">
-          <audio src="voice/sample.wav" controls></audio>
+
+          <!--audio src="audio/sample.wav" controls></audio-->
+
+          <!-- クリックで画像が変わるようにしよう -->
+
+          <img src="image/Start.jpg" alt="" id="play"/>
+          <img src="image/front.png" alt="" id="next"/>
+          <audio id="articleSound"> <source src="notset.mp4" type="audio/wav"/> </audio>
+
+          </div>
+
         </div>
       </div>
     </div>
+
+    <!-- 音声ファイル群を取得します -->
+    <script src="https://www.gstatic.com/firebasejs/3.3.2/firebase.js"></script>
+    <script src="./example.js"></script>
+
+    <script>
+
+    <!-- 'Start.jpg'を'stop.jpg'に変える関数: imgchange -->
+
+    function imgchange(){
+          $('#play').toggle(function(){
+          $('#play').attr('src', 'image/stop.png');
+        },function(){
+          $('#play').attr('src', 'image/Start.png');
+        });
+    }
+      $("#play").on("click", imgchange);
+
+
+    <!-- 音声ファイルのURLを、audioタグの中に入れよう -->
+      function rewrite(val){
+        console.log(val["all"][0]);
+      /*
+        // 表示する文字列を作る
+        var title = val["all"][0].title;
+        // aタグをかぶせる
+        var aTag = $('<a>');
+        aTag.text(title);
+        aTag.attr("href", val["all"]["VoiceURL"].url);
+        // 対象のDOMに詰め込む
+        $("#no1").text("");
+        aTag.appendTo( $("#no1") );
+      */
+      }
+
+    </script>
 
   </body>
 </html>

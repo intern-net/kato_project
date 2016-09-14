@@ -38,7 +38,18 @@ table.type td {
   vertical-align: top;
 }
 
-
+p.soundBtn {
+  width: 75px;
+  height: 24px;
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  cursor: pointer;
+  background: url(../img/top/sound.jpg) top left no-repeat;
+}
+p.clicked {
+  background: url(../img/top/sound.jpg) bottom left no-repeat;
+}
 
 #message {
   max-width: 400px;

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="UTF-8" />
+    <title>favclip station</title>
+    <script src="https://www.gstatic.com/firebasejs/3.3.2/firebase.js"></script>
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+	<script>
+		// Initialize Firebase
+		var config = {
+    	apiKey: "AIzaSyBNoS7WQZpyc4Pko0xLYssHDuoTku86c_8",
+    	authDomain: "kato-intern-project.firebaseapp.com",
+    	databaseURL: "https://kato-intern-project.firebaseio.com",
+    	storageBucket: "kato-intern-project.appspot.com",
+		};
+		firebase.initializeApp(config);
+	</script>
+</head>
+<body>
+	<H1>テストページの最初の文字列</H1>
+
+	<div id="change"><img src="image/next.png" alt="" id="img1"><div>
+	<div id="no1">id:no1</div>
+	<div id="no2" class="c1">id:no2</div>
+
+	<div class="c1">class:c1</div>
+
+	<button id=refresh>rewrite</button>
+	<button id=refresh2>rewrite2</button>
+
+	<script>
+		var cont = 0
+
+		function rewrite3( val ){
+			// 表示する文字列を作る
+			var title = val["data"][0].title;
+			// aタグをかぶせる
+			var aTag = $('<a>');
+			aTag.text(title);
+			aTag.attr("href", val["data"][0].url);
+			// 対象のDOMに詰め込む
+			$("#no1").text("");
+			aTag.appendTo( $("#no1") );
+		};
+
+		function rewrite4( val ){
+			$("#no2.url").attr("href", val["data"][1]["url"]);
+			$("#no2.url").text(val["data"][1]["title"]);
+		};
+
+		function rewrite2(){
+			$("#img1").attr('src', 'image/prev.png');
+		};
+
+		function rewrite(){
+			$(".c1").text("クラス属性は一気に変更" + cont);
+			$("#no2").text("間髪入れずにno2を変更");
+			$("#no1").text("最後にゆっくりno1を変更");
+			cont++
+		};
+		//rewrite();
+
+		$("#refresh").on("click", rewrite);
+		$("#change").on("click", rewrite2);
+		$("#refresh2").on("click", rewrite3);
+
+		$.getJSON("http://localhost:5000/dummy2.json", rewrite3);
+
+	</script>
+
+</body>
+</html>
